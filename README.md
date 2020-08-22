@@ -10,6 +10,16 @@ Ali Matsumoto &amp; Kyle Hua, Fall 2020
 * run `git clone https://<your github username>:<your github password>@github.com/codeology/swift-squad.git`
 * if you're unfamiliar with git, let us know! we'll give you resources so that you're caught up for the project
 
+## Setting up the backend
+Our API is made from Python and the Flask-RESTful framework, which allows us to define API routes we hit from the frontend.
+Code for the API is located in the 'api' directory of this repo.
+1. Enter the API directory: `cd api` 
+2. Set up a virtual environment (this allows you to install libraries without affecting code outside this project): 
+`python3 -m venv venv/`
+3. Activate your venv: `source venv/bin/activate`
+4. Install Flask and Flask-RESTful within your venv: `pip install -r requirements.txt`
+5. Add the venv to your .gitignore: open your gitignore and add the line `/api/venv`
+
 ## What the heck is git? 
 Welcome to our version control system! If you're familiar with git/github, you can skip this section.
 
