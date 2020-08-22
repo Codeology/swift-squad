@@ -22,7 +22,8 @@ people can see it. To obtain other people's work in your local repo, you `pull` 
 Here's how that works: 
 * Make sure you're up to date on everyone's code: from your `master` branch, run `git pull`
     * You can make sure you're on `master` by running `git branch` - it'll display every branch you've created locally, 
-    and there will be a star next to the current one 
+    and there will be a star next to the current one
+    * If you aren't on master, run `git checkout master` to switch.  
 * To create a branch to work on, run `git checkout -b <branch name>` in the terminal 
 * On github, in the remote repo, click the little `branch` icon that (probably) says `master` and type in the same branch
 name you're working with locally. Click `create branch <name>` (it should have a little footnote that says `from master`)
