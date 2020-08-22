@@ -18,7 +18,8 @@ Code for the API is located in the 'api' directory of this repo.
 `python3 -m venv venv/`
 3. Activate your venv: `source venv/bin/activate`
 4. Install Flask and Flask-RESTful within your venv: `pip install -r requirements.txt`
-5. Add the venv to your .gitignore: open your gitignore and add the line `/api/venv`
+5. Add the venv to your .gitignore: open your gitignore and add the line `/api/venv/*`
+    - while you're at it, ignore any other files specific to your local machine 
 
 ## What the heck is git? 
 Welcome to our version control system! If you're familiar with git/github, you can skip this section.
