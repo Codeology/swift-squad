@@ -18,7 +18,7 @@ class Image(Resource):
         return send_file(filename, mimetype='image/gif')
 
     def post(self):
-        print("hit image post api")
+        print("hit image post http-starter")
 
 
 api.add_resource(HelloWorld, '/hello')
