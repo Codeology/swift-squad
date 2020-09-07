@@ -25,7 +25,7 @@ Column 4: Red value
 """
 
 # load and display the image you want to use:
-img = cv2.imread('sample-inputs/jd.JPG')
+img = cv2.imread('inputs/rainbow.jpg')
 cv2.imshow('img', img)
 cv2.waitKey(0)
 
@@ -58,10 +58,9 @@ X_tr = color_train.iloc[:, 1:]
 # fit SVM function to the dataset, and make a model
 SVM = svm.SVC(decision_function_shape="ovo").fit(X_tr, y_tr)
 model2 = SVM.fit(X_tr, y_tr)
-print(round(SVM.score(X_test, y_test), 4))
 
 # load the image again - this will be your final product
-last = cv2.imread('sample-inputs/jd.JPG')
+last = cv2.imread('inputs/rainbow.jpg')
 
 # for each pixel in the image, classify it to one of the colors
 # (this takes a long time - like upwards of five minutes for a big image)
@@ -70,7 +69,6 @@ for row in range(len(img)):
         arr = np.array(img[row][col])
         pred = model2.predict(arr.reshape(1, -1))
         pred_val = pred[0]
-        print('calc')
         last[row][col] = colors[pred_val]
 
 # show the result :)
