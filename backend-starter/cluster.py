@@ -2,6 +2,23 @@ import cv2
 import numpy as np
 from sklearn.cluster import KMeans
 
+"""
+This starter code will grab six prominent colors from an image and return them,
+along with a histogram that might (need to research) contain information about
+color frequencies relative to one another. 
+
+Where to go from here:
+Consider removing lightest / darkest colors
+Address contrast/color similarity/other palette aesthetics 
+Create metric to measure color frequencies
+Play with color contrast
+Right now we have to deal with the discrepancy of RGB/BGR values in images. We may want to consider
+    converting to hex values before sending back to the frontend 
+Create return value format (JSON structure) for the frontend 
+Last step: convert to a format that allows processing to be executed with an http request!
+
+Stretch goal: storage (might also be a frontend thing)
+"""
 
 def centroid_histogram(clt):
     # grab the number of different clusters and create a histogram
