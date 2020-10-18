@@ -16,6 +16,7 @@ Right now we have to deal with the discrepancy of RGB/BGR values in images. We m
     converting to hex values before sending back to the frontend 
 Create return value format (JSON structure) for the frontend 
 Last step: convert to a format that allows processing to be executed with an http request!
+- Remember we might want to let the user select the number of colors they want 
 
 Stretch goal: storage (might also be a frontend thing)
 """
