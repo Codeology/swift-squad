@@ -56,8 +56,13 @@ if __name__ == '__main__':
     # representing the number of pixels labeled to each color
     hist = centroid_histogram(clt)
     print(hist)
-    centers = clt.cluster_centers_
-    print(centers)
-    # given our clusters, consolidate similar values
-    # and delete anything super close to white/black:
+    color_data = np.array(clt.cluster_centers_, dtype=int)
 
+    # Input: color_clusters BGR array of corresponding colors
+    # Output: HEX values of RGB form
+    def convert_to_hex(color_clusters):
+        hex_form = '#{:02x}{:02x}{:02x}'
+        return [hex_form.format(color[2], color[1], color[0]) for color in color_clusters]
+    colors = convert_to_hex(color_data)
+    colors = np.sort(colors)[::-1]
+    print(colors[1:])
