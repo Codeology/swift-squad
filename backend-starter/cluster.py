@@ -12,9 +12,13 @@ Consider removing lightest / darkest colors
 Address contrast/color similarity/other palette aesthetics 
 Create metric to measure color frequencies
 Play with color contrast
+
+
 Right now we have to deal with the discrepancy of RGB/BGR values in images. We may want to consider
     converting to hex values before sending back to the frontend 
 Create return value format (JSON structure) for the frontend 
+
+
 Last step: convert to a format that allows processing to be executed with an http request!
 - Remember we might want to let the user select the number of colors they want 
 
@@ -36,7 +40,7 @@ def centroid_histogram(clt):
 
 
 if __name__ == '__main__':
-    img = cv2.imread('photos/ghost.jpg')
+    img = cv2.imread('photos/blue.jpeg')
     img_copy = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     # Since the K-means algorithm we're about to do,
@@ -45,11 +49,15 @@ if __name__ == '__main__':
     pixelImage = img.reshape((img.shape[0] * img.shape[1], 3))
     # We use the sklearn K-Means algorithm to find the color histogram
     # from our small size image copy
-    clt = KMeans(n_clusters=6)
+    clt = KMeans(n_clusters=9)
     clt.fit(pixelImage)
 
     # build a histogram of clusters and then create a figure
     # representing the number of pixels labeled to each color
     hist = centroid_histogram(clt)
     print(hist)
-    print(clt.cluster_centers_)
+    centers = clt.cluster_centers_
+    print(centers)
+    # given our clusters, consolidate similar values
+    # and delete anything super close to white/black:
+
