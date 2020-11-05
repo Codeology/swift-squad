@@ -3,7 +3,7 @@ VSCOdeology backend, Fall 2020
 Contributors: Ashley Chu, Alicia Matsumoto
 """
 
-from flask import Flask, send_file
+from flask import Flask
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
