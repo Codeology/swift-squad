@@ -13,11 +13,15 @@ class HelloWorld(Resource):
 
 # a get request with an image:
 class Image(Resource):
+
+    # user requests data from source
     def get(self):
         filename = 'sample-ims/me.png'
         return send_file(filename, mimetype='image/gif')
 
+    # user sends data from source
     def post(self):
+
         print("hit image post http-starter")
 
 

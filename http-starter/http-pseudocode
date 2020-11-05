@@ -1,7 +1,0 @@
-Image Class
- - Sends image, process
- - returning HEX values:
-	- {color: freq}
-
- - include histogram, other Vals in req
- 
