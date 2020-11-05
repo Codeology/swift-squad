@@ -5,6 +5,9 @@ Contributors: Ashley Chu, Alicia Matsumoto
 
 from flask import Flask
 from flask_restful import Resource, Api
+import cv2
+import numpy as np
+from sklearn.cluster import KMeans
 
 app = Flask(__name__)
 api = Api(app)
