@@ -21,7 +21,6 @@ class Image(Resource):
 
     # user sends data from source
     def post(self):
-
         print("hit image post http-starter")
 
 
