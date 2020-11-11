@@ -2,13 +2,16 @@
 Image processing! \
 Ali Matsumoto &amp; Kyle Hua, Fall 2020
 
-## Setup
-### To clone this repo locally:
-* open the terminal
-* cd into the directory where you want the project to
- live
-* run `git clone https://<your github username>:<your github password>@github.com/codeology/swift-squad.git`
-* if you're unfamiliar with git, let us know! we'll give you resources so that you're caught up for the project
+##Setup
+Install necessary dependencies: 
+- `pip install flask`
+- `pip install flask_restful`
+Run:
+- `python3 run.py`
+
+This backend handles all of the k-means clustering and image processing logic required of 
+its corresponding <a href="https://github.com/Codeology/swift-squad-frontend">Frontend</a>.<br><br>
+The two 'starter' folders (HTTP and Backend) contain old demo/curriculum content.
 
 ## What the heck is git? 
 Welcome to our version control system! If you're familiar with git/github, you can skip this section.
