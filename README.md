@@ -2,7 +2,7 @@
 Image processing! \
 Ali Matsumoto &amp; Kyle Hua, Fall 2020
 
-##Setup
+## Setup
 Install necessary dependencies: 
 - `pip install flask`
 - `pip install flask_restful`
