@@ -9,6 +9,7 @@ import cluster as cl
 import cv2
 import numpy as np
 from sklearn.cluster import KMeans
+import os
 
 app = Flask(__name__)
 api = Api(app)
@@ -31,31 +32,39 @@ class ImageApi(Resource):
 
     # MAIN METHOD:
     def post(self):
-        # img = cv2.imread(image_file) # this will probably need to be changed to be compatible
-        #
-        # img_copy = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        #
-        # # Since the K-means algorithm we're about to do,
-        # # is very labour intensive, we will do it on a smaller image copy
-        # # This will not affect the quality of the algorithm
-        # pixelImage = img.reshape((img.shape[0] * img.shape[1], 3))
-        # # We use the sklearn K-Means algorithm to find the color histogram
-        # # from our small size image copy
-        # clt = KMeans(n_clusters=9)
-        # clt.fit(pixelImage)
-        #
-        # hist = cl.centroid_histogram(clt)
-        # color_data = np.array(clt.cluster_centers_, dtype=int)
-        # colors = cl.convert_to_hex(color_data)
-        # colors = np.sort(colors)[::-1]
-        # print(colors[1:])
-        
+        # if you change the name 'image' in .get() here, you must also change it on the frontend:
         image_file = self.req_parser.parse_args(strict=True).get("image", None)
         if image_file:
             # Get the byte content using `.read()`
             image = image_file.read()
-            # Now do something with the image...
-            return "Yay, you sent an image!"
+
+            np_arr = np.fromstring(image, np.uint8)
+            img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+
+            # save the file so we can read it in:
+            # filename = werkzeug.secure_filename(image_file.filename)
+            # filepath = os.path.join(os.getcwd() + '/images', filename)
+            # image_file.save(filepath)
+            # img = cv2.imread(filepath)
+
+            # color palette time!
+            # img_copy = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+            # Since the K-means algorithm we're about to do,
+            # is very labour intensive, we will do it on a smaller image copy
+            # This will not affect the quality of the algorithm
+            pixelImage = img.reshape((img.shape[0] * img.shape[1], 3))
+            # We use the sklearn K-Means algorithm to find the color histogram
+            # from our small size image copy
+            clt = KMeans(n_clusters=9)
+            clt.fit(pixelImage)
+
+            hist = cl.centroid_histogram(clt)
+            color_data = np.array(clt.cluster_centers_, dtype=int)
+            colors = cl.convert_to_hex(color_data)
+            colors = np.sort(colors)[::-1]
+            print(colors[1:])
+            return {"colors": [color for color in colors]}
         else:
             return "No image sent :("
 
