@@ -8,6 +8,7 @@ Install necessary dependencies:
 - `pip install flask_restful`
 Run:
 - `python3 run.py`
+- werkzeug
 
 This backend handles all of the k-means clustering and image processing logic required of 
 its corresponding <a href="https://github.com/Codeology/swift-squad-frontend">Frontend</a>.<br><br>
