@@ -41,15 +41,6 @@ class ImageApi(Resource):
             np_arr = np.fromstring(image, np.uint8)
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
-            # save the file so we can read it in:
-            # filename = werkzeug.secure_filename(image_file.filename)
-            # filepath = os.path.join(os.getcwd() + '/images', filename)
-            # image_file.save(filepath)
-            # img = cv2.imread(filepath)
-
-            # color palette time!
-            # img_copy = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
             # Since the K-means algorithm we're about to do,
             # is very labour intensive, we will do it on a smaller image copy
             # This will not affect the quality of the algorithm
