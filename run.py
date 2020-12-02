@@ -2,6 +2,7 @@
 VSCOdeology backend, Fall 2020
 Contributors: Ashley Chu, Alicia Matsumoto
 """
+
 import werkzeug
 from flask import Flask, send_file, request
 from flask_restful import Resource, Api, reqparse
@@ -25,6 +26,7 @@ class ImageApi(Resource):
         # Sending more info in the form? simply add additional arguments, with the location being 'form'
         # parser.add_argument("other_arg", type=str, location='form')
         self.req_parser = parser
+
 
     # # User requests (for easy testing)
     # def get(self):
