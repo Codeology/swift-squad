@@ -32,3 +32,10 @@ files you've changed. Once all files are included, run `git commit -m "<a messag
 saved a snapshot of your work in case something happens!
 * Once you've completed whatever you're working on, commit one more time, then run `git push origin <branch name>`. Now 
 your code is on the github version of your branch, and we can merge it into master or work with it collaboratively!
+
+
+## Ashley Sidenotes
+- pip install flask
+- pip install flask_restful
+- pip install sklearn
+- pip install opencv-python
