@@ -41,6 +41,8 @@ class ImageApi(Resource):
             image = image_file.read()
 
             np_arr = np.frombuffer(image, np.uint8)
+            np_arr = np.fromstring(image, np.uint8)
+
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
             # Since the K-means algorithm we're about to do,
@@ -49,6 +51,7 @@ class ImageApi(Resource):
             pixelImage = img.reshape((img.shape[0] * img.shape[1], 3))
             # We use the sklearn K-Means algorithm to find the color histogram
             # from our small size image copy
+
             clt = KMeans(n_clusters=6)
             clt.fit(pixelImage)
 
