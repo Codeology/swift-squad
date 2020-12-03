@@ -2,7 +2,7 @@
 Image processing! \
 Ali Matsumoto &amp; Kyle Hua, Fall 2020
 
-##Setup
+## Setup
 Install necessary dependencies: 
 - `pip install flask`
 - `pip install flask_restful`
@@ -42,3 +42,5 @@ To test run.py:
 While server is running, in a new terminal:
 - GET: curl http://127.0.0.1:5000/endpoint
 - POST: curl http://127.0.0.1:5000/endpoint
+
+Thank you to <a href="https://levelup.gitconnected.com/better-restful-image-transfer-multipart-uploads-with-python-flask-swift-38a34d4e6e1f">this</a> blog post for the help :) 
