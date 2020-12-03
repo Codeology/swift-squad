@@ -38,7 +38,7 @@ class ImageApi(Resource):
             # Get the byte content using `.read()`
             image = image_file.read()
 
-            np_arr = np.fromstring(image, np.uint8)
+            np_arr = np.frombuffer(image, np.uint8)
             img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
             # Since the K-means algorithm we're about to do,
@@ -47,15 +47,22 @@ class ImageApi(Resource):
             pixelImage = img.reshape((img.shape[0] * img.shape[1], 3))
             # We use the sklearn K-Means algorithm to find the color histogram
             # from our small size image copy
-            clt = KMeans(n_clusters=9)
+            clt = KMeans(n_clusters=6)
             clt.fit(pixelImage)
 
             hist = cl.centroid_histogram(clt)
             color_data = np.array(clt.cluster_centers_, dtype=int)
             colors = cl.convert_to_hex(color_data)
-            colors = np.sort(colors)[::-1]
-            print(colors[1:])
-            return {"colors": [color for color in colors]}
+            dict_form = {}
+            print(hist)
+            print(colors)
+            for i in range(len(hist)):
+                dict_form[hist[i]] = colors[i]
+            hist = np.sort(hist)[::-1]
+            print(hist)
+            colors_sorted = [dict_form[hist[i]] for i in range(len(hist))]
+            print(colors_sorted)
+            return {"colors": [color for color in colors_sorted], "percentages": [val for val in hist]}
         else:
             return "No image sent :("
 
